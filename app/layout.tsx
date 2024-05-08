@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Image from "next/image";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -19,10 +20,12 @@ export default function RootLayout({
       <body className={inter.className}>
         <main className="bg-gray-100 min-h-screen">
           <nav className="w-full bg-white h-16 flex items-center justify-center">
-            <section className="container flex items-center">
+            <section className="container flex items-center gap-3">
+              <Image src={"/logo.png"} width={48} height={48} />
               <h1 className="font-bold text-2xl">
                 Lista de Países
               </h1>
+
             </section>
           </nav>
           {children}
