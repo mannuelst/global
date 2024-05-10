@@ -1,6 +1,17 @@
+import Image from "next/image";
+
 type Country = {
   name: {
     common: string
+  };
+  translations: {
+    por: {
+      common: string
+    }
+  };
+  flags: {
+    svg: string,
+    alt: string
   }
 }
 async function getCountries(): Promise<Country[]> {
@@ -18,6 +29,10 @@ export default async function Home() {
       {
         countries.map((country) => (
           <article className="h-64 min-w-full p-2 bg-white border-2 rounded-xl" key={country.name.common}>
+            <div className="relative w-full h-40 p-2 overflow-hidden rounded-xl">
+
+              <Image src={country.flags.svg} alt={country.flags.alt} fill className="object-cover" />
+            </div>
             <h1>{country.translations.por.common}</h1>
 
           </article>
