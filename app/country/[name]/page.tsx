@@ -24,10 +24,10 @@ async function getCountryBordersName(name: string) {
     return country.borders?.map(border => {
         const borderCountry = countries.find(country => country.cca3 === border)
         return {
-            name: borderCountry?.name.common,
-            ptName: borderCountry?.translations.por.common,
-            flag: borderCountry?.flags.svg,
-            flagAlt: borderCountry?.flags.alt
+            name: borderCountry.name.common,
+            ptName: borderCountry.translations.por.common,
+            flag: borderCountry.flags.svg,
+            flagAlt: borderCountry.flags.alt
         }
     })
 
