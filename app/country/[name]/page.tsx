@@ -3,9 +3,18 @@ import { ArrowLeft, Earth, Languages, MapPinned, UsersRound } from "lucide-react
 import Image from "next/image";
 import Link from "next/link";
 
+// async function getCountryByName(name: string): Promise<Country> {
+//     const response = await fetch(`https://restcountries.com/v3.1/name/${name}?fullText=true`)
+//     return (await response.json())[0]
+
+
+// }
+
 async function getCountryByName(name: string): Promise<Country> {
-    const response = await fetch(`https://restcountries.com/v3.1/name/${name}?fullText=true`)
-    return (await response.json())[0]
+    const response = await fetch(`https://restcountries.com/v3.1/all`)
+    const countries: Country[] = await response.json()
+
+    return countries.find((country: Country) => country.name.common === name)!
 
 
 }
@@ -44,6 +53,13 @@ export default async function CountryPage({ params: { name } }: { params: { name
                         alt={country.flags.alt} fill className="object-cover" />
                 </div>
             </article>
+            <section>
+                <h3 className="mt-12 text-2xl font-semibold text-gray-800">Países que fazem fronteira</h3>
+                <div className="grid grid-cols-5 w-full">
+
+
+                </div>
+            </section>
         </section>
 
 
