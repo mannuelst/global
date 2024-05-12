@@ -50,12 +50,12 @@ export default async function CountryPage({ params: { name } }: { params: { name
             <Link className="flex items-center py-2 gap-1" href={"/"}>
                 <ArrowLeft size={21} />Voltar
             </Link>
-            <article className="flex justify-between min-w-full p-10 bg-white rounded-xl">
+            <article className="flex md:flex-row flex-col justify-between min-w-full p-10 bg-white rounded-xl">
                 <section>
                     {country.capital && (
                         <h2 className="flex gap-1 text-xl text-gray-800"> <MapPinned /> <b>Capital:</b>{country.capital} </h2>
                     )}
-                    <h2 className="flex gap-1 text-xl text-gray-800"><Earth /> <b>Continente: </b>{country.region}{country.subregion && `- {country.subregion}`}</h2>
+                    <h2 className="flex gap-1 text-xl text-gray-800"><Earth /> <b>Continente: </b>{country.region}{country.subregion && ` - ${country.subregion}`}</h2>
                     <h2 className="flex gap-1 text-xl text-gray-800"> <UsersRound /> <b>População: </b>{formatter.format(country.population)}</h2>
                     {country.languages && (
                         <h2 className="flex gap-1 text-xl text-gray-800">  <Languages /><b>Idiomas: </b>{Object.values(country.languages).map((language) => (
@@ -66,17 +66,17 @@ export default async function CountryPage({ params: { name } }: { params: { name
                     )}
 
                 </section>
-                <div className="relative h-auto w-96 shadow-md">
+                <div className="relative h-48 md:h-auto w-96 my-2 shadow-md md:order-last order-first">
                     <Image src={country.flags.svg}
                         alt={country.flags.alt} fill className="object-cover" />
                 </div>
             </article>
             <section>
                 <h3 className="mt-12 text-2xl font-semibold text-gray-800">Países que fazem fronteira</h3>
-                <div className="grid grid-cols-5 gap-3 mt-6 w-full">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 container w-full gap-2">
 
                     {borderCountries?.map((border) => (
-                        <CountryCard key={border.name} name={border.name} ptName={border.ptName} flag={border.flag} flagAlt={border.flagAlt} />
+                        <CountryCard key={border.name} {...border} />
                     ))}
                 </div>
             </section>

@@ -15,7 +15,7 @@ export type Country = {
   }
   capital: string;
   region: string;
-  sobregion: string;
+  subregion: string;
   population: number,
   languages?: {
     [key: string]: string
@@ -35,7 +35,7 @@ export default async function Home() {
   const countries = await getCountries()
 
   return (
-    <section className="grid grid-cols-5 container w-full gap-2 mt-16 ">
+    <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 container w-full gap-2 mt-16 ">
       {
         countries.map((country) => (
           <CountryCard key={country.name.common} name={country.name.common} ptName={country.translations.por.common} flag={country.flags.svg} flagAlt={country.flags.alt} />
