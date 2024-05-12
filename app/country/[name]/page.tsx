@@ -15,7 +15,7 @@ export default async function CountryPage({ params: { name } }: { params: { name
     // console.log("HEYEYEYEYDI", country)
     const formatter = Intl.NumberFormat("en", { notation: "compact" })
     return (
-        <section>
+        <section className="flex flex-col container">
             <h1 className="text-5xl text-center font-bold text-gray-800 my-16">
                 {country.translations.por.common}
             </h1>
@@ -25,14 +25,19 @@ export default async function CountryPage({ params: { name } }: { params: { name
             </Link>
             <article className="flex justify-between min-w-full p-10 bg-white rounded-xl">
                 <section>
-                    <h2 className="flex gap-1 text-xl text-gray-800"> <MapPinned /> <b>Capital:</b>{country.capital} </h2>
-                    <h2 className="flex gap-1 text-xl text-gray-800"><Earth /> <b>Continente: </b>{country.region} - {country.subregion}</h2>
+                    {country.capital && (
+                        <h2 className="flex gap-1 text-xl text-gray-800"> <MapPinned /> <b>Capital:</b>{country.capital} </h2>
+                    )}
+                    <h2 className="flex gap-1 text-xl text-gray-800"><Earth /> <b>Continente: </b>{country.region}{country.subregion && `- {country.subregion}`}</h2>
                     <h2 className="flex gap-1 text-xl text-gray-800"> <UsersRound /> <b>População: </b>{formatter.format(country.population)}</h2>
-                    <h2 className="flex gap-1 text-xl text-gray-800">  <Languages /><b>Idiomas: </b>{Object.values(country.languages).map((language) => (
-                        <span key={language} className="inline-block p-1 bg-indigo-700 text-white mr-2 text-sm rounded-2xl">
-                            {language}
-                        </span>
-                    ))}</h2>
+                    {country.languages && (
+                        <h2 className="flex gap-1 text-xl text-gray-800">  <Languages /><b>Idiomas: </b>{Object.values(country.languages).map((language) => (
+                            <span key={language} className="inline-block p-1 bg-indigo-700 text-white mr-2 text-sm rounded-2xl">
+                                {language}
+                            </span>
+                        ))}</h2>
+                    )}
+
                 </section>
                 <div className="relative h-auto w-96 shadow-md">
                     <Image src={country.flags.svg}

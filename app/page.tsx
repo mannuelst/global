@@ -15,9 +15,9 @@ export type Country = {
     alt: string
   }
   capital: string;
-  region: string,
-  sobregion: string,
-  languages: {
+  region: string;
+  sobregion: string;
+  languages?: {
     [key: string]: string
   }
 
