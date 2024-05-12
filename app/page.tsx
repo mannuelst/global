@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-type Country = {
+export type Country = {
   name: {
     common: string
   };
@@ -14,6 +14,13 @@ type Country = {
     svg: string,
     alt: string
   }
+  capital: string;
+  region: string,
+  sobregion: string,
+  languages: {
+    [key: string]: string
+  }
+
 }
 async function getCountries(): Promise<Country[]> {
   const response = fetch("https://restcountries.com/v3.1/all")
@@ -29,8 +36,8 @@ export default async function Home() {
     <section className="grid grid-cols-5 container w-full gap-2 mt-16 ">
       {
         countries.map((country) => (
-          <Link href={`/country/${country.name.common}`}>
-            <article className="h-64 min-w-full p-2 bg-white border-2 rounded-xl hover:border-indigo-200 hover:shadow-xl transition-all" key={country.name.common}>
+          <Link href={`/country/${country.name.common}`} key={country.name.common}>
+            <article className="h-64 min-w-full p-2 bg-white border-2 rounded-xl hover:border-indigo-200 hover:shadow-xl transition-all" >
               <div className="relative w-full h-40 p-2 overflow-hidden rounded-xl">
 
                 <Image src={country.flags.svg} alt={country.flags.alt} fill className="object-cover" />
