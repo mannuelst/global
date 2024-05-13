@@ -3,11 +3,14 @@ import { Inter } from "next/font/google";
 import Image from "next/image";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const fontText = Inter({
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "global",
   description: "List of countries",
+
 };
 
 export default function RootLayout({
@@ -17,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt">
-      <body className={inter.className}>
+      <body className={fontText.className}>
         <main className="bg-gray-100 min-h-screen flex flex-col items-center">
           <nav className="w-full bg-white h-16 flex items-center justify-center">
             <section className="container flex items-center gap-3">

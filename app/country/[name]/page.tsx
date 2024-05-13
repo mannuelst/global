@@ -24,10 +24,10 @@ async function getCountryBordersName(name: string) {
     return country.borders?.map(border => {
         const borderCountry = countries.find(country => country.cca3 === border)
         return {
-            name: borderCountry.name.common,
-            ptName: borderCountry.translations.por.common,
-            flag: borderCountry.flags.svg,
-            flagAlt: borderCountry.flags.alt
+            name: borderCountry?.name.common,
+            ptName: borderCountry?.translations.por.common,
+            flag: borderCountry?.flags.svg,
+            flagAlt: borderCountry?.flags.alt
         }
     })
 
@@ -75,9 +75,11 @@ export default async function CountryPage({ params: { name } }: { params: { name
                 <h3 className="mt-12 text-2xl font-semibold text-gray-800">Países que fazem fronteira</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 container w-full gap-2">
 
-                    {borderCountries?.map((border) => (
-                        <CountryCard key={border.name} {...border} />
-                    ))}
+                    {borderCountries && (
+                        borderCountries.map((border) => (
+                            <CountryCard key={border.name} {...border} />
+                        ))
+                    )}
                 </div>
             </section>
         </section>
