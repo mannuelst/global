@@ -1,6 +1,6 @@
 # GLOBAL
 
-![Preview](url_da_imagem)
+![Preview](/public/global.png)
 
 ## Descrição
 
@@ -13,8 +13,6 @@ Antes de começar, certifique-se de ter o Node.js instalado em sua máquina. Em 
 ```bash
 npm install
 ```
-
-````
 
 ## Uso
 
@@ -54,6 +52,6 @@ Este projeto faz uso das seguintes tecnologias:
 - `start`: Inicia o servidor de produção.
 - `lint`: Executa a verificação de linting.
 
+```
 
-
-````
+```
