@@ -8,7 +8,7 @@ export type Country = {
     por: {
       common: string
     }
-  };
+  },
   flags: {
     svg: string,
     alt: string
